@@ -9,7 +9,6 @@ numpy==1.26.4
 # If using matplotlib (for charts, optional):
 matplotlib==3.8.4
 # For compression/decompression
-gzip
 # If using yfinance or nsepython or other market data:
 yfinance==0.2.38
 nsepython==3.1
