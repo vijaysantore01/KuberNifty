@@ -4,7 +4,6 @@ pandas==2.2.2
 requests==2.31.0
 pyotp==2.9.0
 twilio==9.0.3
-zoneinfo; python_version >= '3.9'
 # If using numpy explicitly:
 numpy==1.26.4
 # If using matplotlib (for charts, optional):
@@ -15,5 +14,5 @@ gzip
 yfinance==0.2.38
 nsepython==3.1
 # For Upstox SmartAPI (if you use it directly):
-SmartApi==1.2.9
+SmartApi @ git+https://github.com/angel-one/smartapi-python.git
 # For deploying to Render, gunicorn is mandatory (already listed)
