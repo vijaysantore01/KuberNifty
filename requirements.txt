@@ -13,5 +13,5 @@ matplotlib
 yfinance
 nsepython
 # For Upstox SmartAPI (if you use it directly):
-SmartApi @ git+https://github.com/angel-one/smartapi-python.git
+git+https://github.com/angel-one/smartapi-python.git#egg=smartapi_python
 # For deploying to Render, gunicorn is mandatory (already listed)
