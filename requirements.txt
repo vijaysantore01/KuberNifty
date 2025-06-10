@@ -1,17 +1,17 @@
-Flask==2.2.5
-gunicorn==21.2.0
-pandas==2.2.2
-requests==2.31.0
-pyotp==2.9.0
-twilio==9.0.3
+Flask
+gunicorn
+pandas
+requests
+pyotp
+twilio
 # If using numpy explicitly:
-numpy==1.26.4
+numpy
 # If using matplotlib (for charts, optional):
-matplotlib==3.8.4
+matplotlib
 # For compression/decompression
 # If using yfinance or nsepython or other market data:
-yfinance==0.2.38
-nsepython==3.1
+yfinance
+nsepython
 # For Upstox SmartAPI (if you use it directly):
 SmartApi @ git+https://github.com/angel-one/smartapi-python.git
 # For deploying to Render, gunicorn is mandatory (already listed)
