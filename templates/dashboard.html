@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>📈 NIFTY Option Trading Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="4">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Chart.js CDN for sparklines -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="kuber-banner">
+        ॐ श्री कुबेराय नमः - शुभ लाभ, शुभ व्यापार!
+    </div>
+    <div style="text-align:center; margin-top: 2px; margin-bottom: 10px;">
+  <span id="runtime-clock" style="font-size:1.1em; font-family:monospace; color:#339966;">
+    --
+  </span>
+</div>
+
+    {% if dashboard.market_closed %}
+  <div class="alert alert-warning" style="color: #b04e0a; font-weight: bold; font-size: 1.2em; background: #fff8e1; border-radius: 8px; padding: 16px; margin: 16px 0;">
+    ⚠️ Market is currently closed. Live prices and signals will update after 09:15 IST on trading days.
+  </div>
+{% endif %}
+    <div class="container">
+        <!-- ... rest of your content ... -->
+
+    <div class="container">
+        <header>
+            <img src="https://img.icons8.com/color/48/000000/combo-chart--v1.png" class="logo" />
+            <h2> NIFTY Option Trading Dashboard </h2>
+            <div class="live-dot" id="liveDot"></div>
+        </header>
+
+      <div class="section sentiment-row">
+    <span class="label">Market Sentiment:</span>
+<span class="sentiment-label {{ dashboard.sentiment_class }}">{{ dashboard.market_sentiment }}</span>
+</div>
+
+
+        <div class="section stats-row">
+            <span><b>Spot:</b> <span class="big-bold">₹{{ dashboard.spot|safe }}</span></span>
+            <span class="big-bold spot">₹{{ dashboard.spot|safe }}</span>
+
+            <span><b>Max Pain:</b> <span class="big-bold">₹{{ dashboard.max_pain }}</span></span>
+            <span><b>PCR:</b> <span class="big-bold">{{ dashboard.pcr }}</span></span>
+            <span><b>Skew:</b> <span class="big-bold">{{ dashboard.skew }}</span></span>
+            <!-- Sparkline for Spot (if you want to add later) -->
+            <!-- <canvas id="spotSpark" width="60" height="20"></canvas> -->
+        </div>
+
+        <div class="section signals-card">
+            <span>OI Signal: <span class="score-badge">{{ dashboard.oi_score }}</span></span>
+            <span>Price Score: <span class="score-badge">{{ dashboard.price_score }}</span></span>
+            <span>Final Signal:
+                <span class="signal-badge signal-{{ dashboard.final_signal|lower|replace(' ', '-') }}">
+                    {{ dashboard.final_signal }}
+                </span>
+            </span>
+        </div>
+
+        <div class="section expiry-timer">
+            <!-- Optionally show time to expiry here -->
+        </div>
+
+        <div class="section table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Spot</th>
+                        <th>Premium</th>
+                        <th>Signal</th>
+                        <th>Strike</th>
+                        <th>Δ Premium</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in dashboard.signal_history %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td class="signal-{{ row[3]|lower|replace(' ', '-') }}">{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                            <td>{{ row[5] }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" style="text-align:center;color:#bbb;">No signal history yet</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <script>
+        // Simple blinking "live" dot
+        setInterval(() => {
+            document.getElementById("liveDot").classList.toggle("on");
+        }, 800);
+    </script>
+        <script>
+function updateClock() {
+    var now = new Date();
+    var istNow = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Kolkata"}));
+    var timeStr = istNow.toLocaleTimeString('en-US', { hour12: false }) + ' IST';
+    document.getElementById('runtime-clock').textContent = timeStr;
+}
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
+</body>
+</html>

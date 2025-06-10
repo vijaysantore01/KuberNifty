@@ -1,0 +1,196 @@
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background: #f7fafc;
+    margin: 0;
+    padding: 0;
+    color: #1a202c;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 24px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 40px rgba(40,60,80,.08);
+    padding: 32px 28px 28px 28px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 10px;
+}
+
+header .logo {
+    width: 52px;
+    height: 52px;
+}
+
+header h1 {
+    font-size: 2rem;        /* Made smaller as requested */
+    font-weight: bold;
+    color: #185397;
+    margin: 0 0 0 10px;
+    flex: 1;
+    letter-spacing: 0.5px;
+}
+
+.live-dot {
+    width: 12px;
+    height: 12px;
+    background: #3ec300;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #90ee90, 0 0 4px #1ee400;
+    margin-left: auto;
+    opacity: 0.65;
+    transition: opacity 0.2s;
+}
+.live-dot.on {
+    opacity: 1;
+    box-shadow: 0 0 16px #0f0, 0 0 6px #90ee90;
+}
+
+.section {
+    margin: 16px 0;
+}
+
+.stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.2em;
+    font-size: 1.5rem;
+}
+
+.big-bold { font-weight: bold; font-size: 1.15em; }
+.label { font-size: 1.18em; font-weight: 500; }
+
+.badge {
+    padding: 6px 18px;
+    border-radius: 16px;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-left: 7px;
+}
+.badge-bullish { background: #e6ffed; color: #09742c; border: 1.8px solid #59cb80; }
+.badge-bearish { background: #ffeaea; color: #c72525; border: 1.8px solid #f39595; }
+.badge-neutral { background: #fdfce6; color: #8b6e00; border: 1.8px solid #ffe98f; }
+
+.signals-card {
+    display: flex;
+    align-items: center;
+    background: #fafbfc;
+    border-radius: 18px;
+    box-shadow: 0 1px 6px #d0e0f622;
+    padding: 18px 24px;
+    gap: 2.4em;
+    font-size: 1.23em;
+}
+
+.score-badge {
+    display: inline-block;
+    background: #fffbe8;
+    color: #c09018;
+    border-radius: 11px;
+    padding: 2px 18px;
+    font-weight: 800;
+    font-size: 1.1em;
+    margin-left: 7px;
+}
+
+.signal-badge {
+    border-radius: 12px;
+    padding: 3px 13px;
+    font-weight: bold;
+    font-size: 1.13em;
+}
+.signal-buy-call, .signal-bullish {
+    background: #e6ffed;
+    color: #09742c;
+    border: 1.5px solid #46e088;
+}
+.signal-buy-put, .signal-bearish {
+    background: #ffeaea;
+    color: #c72525;
+    border: 1.5px solid #e97070;
+}
+.signal-stay-neutral, .signal-neutral {
+    background: #fffbe6;
+    color: #eab308;
+    border: 1.5px solid #f6e59f;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 16px;
+    border-radius: 16px;
+    background: #fbfcfd;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f7fafc;
+    margin: 0;
+}
+th, td {
+    padding: 17px 14px;
+    font-size: 1.13em;
+    text-align: center;
+}
+th {
+    background: #e7edf5;
+    color: #20252d;
+    font-weight: 700;
+    border-bottom: 2px solid #dde4f2;
+}
+tr:nth-child(even) td { background: #f3f6f9; }
+tr td.signal-buy-call { color: #09742c; font-weight: bold; }
+tr td.signal-buy-put { color: #c72525; font-weight: bold; }
+tr td.signal-stay-neutral { color: #eab308; font-weight: bold; }
+
+@media (max-width: 820px) {
+    .container { padding: 9px 3px 10px 3px; }
+    .signals-card { flex-direction: column; gap: 1.3em; padding: 12px 9px; }
+    .stats-row { gap: 1.2em; font-size: 1.1rem;}
+    th, td { font-size: 0.97em; padding: 9px 7px;}
+    header h1 { font-size: 1.2rem; }
+}
+
+footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 1.3em;
+    color: #c37a00;
+    font-weight: 600;
+    opacity: .94;
+}
+
+.kuber-banner {
+    width: 100%;
+    background: linear-gradient(90deg, #ffe066 0%, #fff6d1 100%);
+    color: #c37a00;
+    font-size: 1.35em;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 15px 0 10px 0;
+    border-bottom: 2.5px solid #ffd600;
+    font-family: 'Mukta', 'Segoe UI', 'Arial', sans-serif;
+    box-shadow: 0 1px 9px #e5d58b22;
+    z-index: 99;
+}
+
+/* Sentiment label coloring */
+.sentiment-label.bullish {
+    color: #16a34a;  /* Green-600 */
+    font-weight: bold;
+}
+.sentiment-label.bearish {
+    color: #dc2626;  /* Red-600 */
+    font-weight: bold;
+}
+.sentiment-label.neutral {
+    color: #f59e42;  /* Amber-500 (orange/yellow) */
+    font-weight: bold;
+}
