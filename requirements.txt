@@ -14,4 +14,5 @@ yfinance
 nsepython
 # For Upstox SmartAPI (if you use it directly):
 git+https://github.com/angel-one/smartapi-python.git#egg=smartapi_python
+logzero
 # For deploying to Render, gunicorn is mandatory (already listed)
